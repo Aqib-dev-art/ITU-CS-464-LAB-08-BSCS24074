@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!241 &241
+AudioMixer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GameMixer
+  m_MasterGroup: {fileID: 1140946220}
+  m_Groups:
+  - {fileID: 1140946220}
+  - {fileID: 1140946221}
+  - {fileID: 1140946222}
+  - {fileID: 1140946223}
+  m_Snapshots:
+  - {fileID: -705441291}
+  m_StartSnapshot: {fileID: -705441291}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_JobsDebugMode: 0
+  m_ExposedParameters:
+  - {fileID: 1140946220}
+  - {fileID: 1140946221}
+  - {fileID: 1140946222}
+  - {fileID: 1140946223}
+--- !u!243 &-705441291
+AudioMixerSnapshot:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snapshot
+  m_AudioMixer: {fileID: 241}
+  m_FloatValues:
+  - m_Path: 1140946220
+    m_Values:
+    - m_Target: 0
+      m_Current: 0
+  - m_Path: 1140946221
+    m_Values:
+    - m_Target: 0
+      m_Current: 0
+  - m_Path: 1140946222
+    m_Values:
+    - m_Target: 0
+      m_Current: 0
+  - m_Path: 1140946223
+    m_Values:
+    - m_Target: 0
+      m_Current: 0
+  m_TransitionOverrides: []
+--- !u!242 &1140946220
+AudioMixerGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 241}
+  m_Volume: 1140946220
+  m_Pitch: 1140946220
+  m_Children:
+  - {fileID: 1140946221}
+  - {fileID: 1140946222}
+  - {fileID: 1140946223}
+  m_Effects: []
+  m_UserData:
+  m_ExtendedProperties: 0
+--- !u!242 &1140946221
+AudioMixerGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music
+  m_AudioMixer: {fileID: 241}
+  m_Volume: 1140946221
+  m_Pitch: 1140946221
+  m_Children: []
+  m_Effects: []
+  m_UserData:
+  m_ExtendedProperties: 0
+--- !u!242 &1140946222
+AudioMixerGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SFX
+  m_AudioMixer: {fileID: 241}
+  m_Volume: 1140946222
+  m_Pitch: 1140946222
+  m_Children: []
+  m_Effects: []
+  m_UserData:
+  m_ExtendedProperties: 0
+--- !u!242 &1140946223
+AudioMixerGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_AudioMixer: {fileID: 241}
+  m_Volume: 1140946223
+  m_Pitch: 1140946223
+  m_Children: []
+  m_Effects: []
+  m_UserData:
+  m_ExtendedProperties: 0

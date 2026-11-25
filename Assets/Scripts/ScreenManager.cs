@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// Put this on an empty GameObject called "UIManager".
 /// Each screen = a panel with a CanvasGroup. Register them in the list.
+/// Lab 08: wired to UIAudioPlayer for panel open/close and navigation sounds.
 public class ScreenManager : MonoBehaviour
 {
     [System.Serializable]
@@ -17,6 +18,11 @@ public class ScreenManager : MonoBehaviour
     public string startScreen = "Title";
     public float duration = 0.35f;
     public float slideDistance = 120f;
+
+    // ── Music trigger screens ─────────────────────────────────────────────────
+    [Header("Music Transitions (optional)")]
+    public string menuMusicScreen    = "MainMenu";   // triggers menu music
+    public string resultsMusicScreen = "Results";    // triggers results music
 
     readonly Dictionary<string, CanvasGroup> map = new Dictionary<string, CanvasGroup>();
     readonly Stack<string> history = new Stack<string>();
@@ -36,6 +42,8 @@ public class ScreenManager : MonoBehaviour
     {
         current = startScreen;
         SetState(map[current], true);
+        // Start menu music
+        MusicManager.I?.PlayMenu();
     }
 
     // ---- Call these from Button OnClick ----
@@ -44,6 +52,7 @@ public class ScreenManager : MonoBehaviour
     public void GoTo(string id)
     {
         if (busy || id == current) return;
+        UIAudioPlayer.I?.PlayButtonClick();      // Lab 08: navigation sound
         history.Push(current);
         StartCoroutine(Transition(current, id, +1));
     }
@@ -52,6 +61,7 @@ public class ScreenManager : MonoBehaviour
     public void Back()
     {
         if (busy || history.Count == 0) return;
+        UIAudioPlayer.I?.PlayButtonBack();       // Lab 08: back sound
         StartCoroutine(Transition(current, history.Pop(), -1));
     }
 
@@ -59,6 +69,7 @@ public class ScreenManager : MonoBehaviour
     public void GoToRoot(string id)
     {
         if (busy) return;
+        UIAudioPlayer.I?.PlayButtonBack();       // Lab 08: back/cancel sound
         history.Clear();
         StartCoroutine(Transition(current, id, -1));
     }
@@ -71,6 +82,8 @@ public class ScreenManager : MonoBehaviour
         CanvasGroup from = map[fromId], to = map[toId];
         RectTransform fr = from.transform as RectTransform;
         RectTransform tr = to.transform as RectTransform;
+
+        UIAudioPlayer.I?.PlayPanelOpen();        // Lab 08: panel opening sound
 
         from.interactable = false;
         to.gameObject.SetActive(true);
@@ -100,6 +113,15 @@ public class ScreenManager : MonoBehaviour
         SetState(to, true);
         current = toId;
         busy = false;
+
+        // Lab 08: trigger music transitions on specific screen arrivals
+        TriggerMusicForScreen(toId);
+    }
+
+    void TriggerMusicForScreen(string id)
+    {
+        if (id == menuMusicScreen)    MusicManager.I?.PlayMenu();
+        if (id == resultsMusicScreen) MusicManager.I?.PlayResults();
     }
 
     static void SetState(CanvasGroup g, bool on)

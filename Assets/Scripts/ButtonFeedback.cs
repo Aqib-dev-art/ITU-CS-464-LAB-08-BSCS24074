@@ -4,12 +4,25 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// Add to every Button: shrinks on press, springs back with overshoot (EaseOutBack).
-public class ButtonFeedback : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
+/// Lab 08: also plays hover and press sounds through UIAudioPlayer.
+public class ButtonFeedback : MonoBehaviour,
+    IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 {
     public float pressedScale = 0.92f;
     Coroutine routine;
 
-    public void OnPointerDown(PointerEventData e) { ScaleTo(pressedScale, 0.08f, false); }
+    // ── Pointer events ────────────────────────────────────────────────────────
+    public void OnPointerEnter(PointerEventData e)
+    {
+        UIAudioPlayer.I?.PlayButtonHover();      // Lab 08: hover sound
+    }
+
+    public void OnPointerDown(PointerEventData e)
+    {
+        UIAudioPlayer.I?.PlayButtonClick();      // Lab 08: press sound
+        ScaleTo(pressedScale, 0.08f, false);
+    }
+
     public void OnPointerUp(PointerEventData e)   { ScaleTo(1f, 0.25f, true); }
     public void OnPointerExit(PointerEventData e) { ScaleTo(1f, 0.15f, false); }
 

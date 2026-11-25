@@ -1,28 +1,25 @@
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Uu]ser[Ss]ettings/
+# Unity generated folders — do NOT commit
+Library/
+Temp/
+Logs/
+obj/
 .vs/
-.idea/
-.vscode/
 *.csproj
 *.sln
-*.suo
-*.user
-*.pidb
-*.booproj
-*.svd
+*.sln.docinfo
+
+# Build output
+Builds/
+Build/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Unity crash / lock files
+*.pidb.meta
 *.pdb
 *.mdb
-*.opendb
-*.VC.db
-*.apk
-*.aab
-*.unitypackage
 sysinfo.txt
-crashlytics-build.properties
-.DS_Store
-# keep Screenshots/ and README images
+ExportedObj/
+*.unitypackage
