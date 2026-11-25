@@ -1,25 +1,8 @@
-# Unity generated folders — do NOT commit
-Library/
-Temp/
-Logs/
-obj/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Uu]serSettings/
 .vs/
-*.csproj
-*.sln
-*.sln.docinfo
-
-# Build output
-Builds/
-Build/
-
-# OS junk
-.DS_Store
-Thumbs.db
-
-# Unity crash / lock files
-*.pidb.meta
-*.pdb
-*.mdb
-sysinfo.txt
-ExportedObj/
-*.unitypackage
+vs/
+[Mm]emoryCaptures/
